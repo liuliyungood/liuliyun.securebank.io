@@ -1,16 +1,4 @@
-<?php
-include("session.php");
 
-if($session_user!="")
-{
-    header('location: UserProfile.php');
-}
-if(isset($_GET['error']))
-{
-    $errormessage=$_GET['error'];
-    echo "<script>alert('$errormessage');</script>";
-}
-?>
 
 <html lang="en">
 <head>
