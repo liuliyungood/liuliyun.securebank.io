@@ -1,138 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="jquery.validate.js"></script>
-    <script>
-        /* Regular expressions are learned from this website: https://www.w3schools.com/jsref/jsref_regexp_charset_not.asp 
-        Validation of password is learned from this website: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_password_val 
-        */
-        var myInput = document.getElementById("password");
-        var lowerCaseLetters = /[a-z]/g;
-        var upperCaseLetters = /[A-Z]/g;
-        var numbers = /[0-9]/g;
-        var special = /[~!#$]/g;
-        
-        function validateRadio (radios)
+<?php
+include("session.php");
+
+if($session_user!="")
 {
-    for (i = 0; i < radios.length; ++ i)
-    {
-        if (radios [i].checked) return true;
-    }
-    return false;
+    header('location: UserProfile.php');
 }
+if(isset($_GET['error']))
+{
+    $errormessage=$_GET['error'];
+    echo "<script>alert('$errormessage');</script>";
+}
+?>
 
+<html lang="en">
+<head>
+<title>LoginForm</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/styletest.css">
+</head>
+<body background="./images/stairs.jpg">
 
-        
-    function validate(){
-            if ($("#username").val()==""){
-            alert("Please enter your full name.");
-            return false;
-        } else if ($("#account_type").val()==""){
-            alert("Please choose your account type.");
-            return false;
-        } else if ($("#password").val()==""){
-            alert("Please enter your password.");
-            return false;
-        } else if ($("#password").val().length<8){
-            alert("Password is no less than 8 characters.");
-            return false;
-        } else if ($("#password").val().length>12){
-            alert("Password is no more than 12 characters.");
-            return false;
-        } else if (!$("#password").val().match(lowerCaseLetters)){
-            alert("Password should include one lower case letter.");
-            return false;
-        }  else if (!$("#password").val().match(upperCaseLetters)) {
-            alert("Password should include one upper case letter.");
-            return false;
-        }  else if (!$("#password").val().match(numbers)) {
-            alert("Password should include one number.");
-            return false;
-        }  else if (!$("#password").val().match(special)) {
-            alert("Password should include one of the special characters: ~!#$");
-            return false;
-        }  else if ($("#confirm_password").val()==""){
-            alert("Please re-type the password.");
-            return false;
-        }  else if ($("#password").val() != $("#confirm_password").val()){
-            alert("Password does not match.");
-            return false;
-        }  else if ($("#email").val()=="") {
-            alert("Please enter your email address.");
-            return false;
-        }  else if ($("#mobile").val()=="") {
-            alert("Please enter your mobile number.");
-            return false;
-        }  else if (!$("#agree").is(":checked")){
-            alert("You must agree to the terms and conditions.");
-            return false;
-        }  else if(validateRadio (document.forms["signupForm"]["account_type"])===false){
-        alert('Please choose your account type.');
-        return false;
-        }  else{
-           return true;
-        } 
-           
-    }
-    </script>
-    </head>
+<!-- For the website layout, I used code in this website: https://www.w3schools.com/css/tryit.asp?filename=trycss_website_layout_navbar -->
     
-<body>
+<div class="topnav">
+  <a href="#">Accounts</a>
+  <a href="#">Transactions</a>
+  <a href="#">E-statements</a>
+  <a href="#">Transfer</a>
+  <a href="#">Manage</a>
+  <a href="#">Message</a>
+</div>
+    
+    <div class="left">
+  <h2>Secure Bank</h2>
+    <p>  Secure bank is a safe bank aiming to bring you about the high quality service and long-term earnings.</p>
+        <a href="liyunl467458.mp4" type="video/mp4">Information tab</a> 
+       
+</div>
 
-<form id="signupForm" action="./register.php" method="post" onsubmit="return validate();">
-  <fieldset>
-    <legend>Create an Account</legend>
-      <p>It's free and always will be</p>
-      <p>
-      <label for="username">Username</label>
-          <input id="username" name="username" />
-             </p>
-      <p>
-          <label for="account_type">Account Type:</label>
-          <input id="individual" type="radio" name="account_type" value="individual">Individual Account
-          <input id="business" type="radio" name="account_type" value="business">Business Account
-          
-      </p>
+    
+    
+<!-- password validation coding is from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_password_val -->
+    
+<div class="container" >
+    <h2>Log in</h2>
+  <form action="Login.php" method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="p
+                 assword" id="password" name="password"  required>
+    
+    <input type="submit" value="Submit">
       
-      <p>
-          <label for="password">Password</label>
-          <input id="password" name="password"
-                 type="password" />
-      </p>
-      <p>
-          <label for="confirm_password">Password (confirmation)</label>
-          <input id="confirm_password" name="confirm_password"
-                 type="password" />
-      </p>
-      <p>(Password should contain at least one upper case letter, one lower case letter, one number and one special characters including ~!#$)</p>
-      <p>
-      <label for="email">Email</label>
-          <input id="email" name="email"/>
-      </p>
-      <p>
-      <label for="mobile">mobile</label>
-          <input id="mobile" name="mobile" />
-             </p>
-      <p>
-          <label for="gender">Gender (optional):</label>
-          <input id="male" type="radio" name="gender" value="male">Male
-          <input id="female" type="radio" name="gender" value="female">Female
-          <input id="other" type="radio" name="gender" value="other">Other 
-      </p>
-      <p>
-      <label for="agree">Agree the terms and conditions</label>
-      <input type="checkbox" class="checkbox" id="agree" name="agree"/>
-      </p>
-      <p>
-      <input class="submit" type="submit" value="Submit" />
-      </p>
-    </fieldset>
-</form>
-
-
+      <a href="CreateAccount.html" style="color:white;">New user? Create a new account</a>
+  </form>
+</div>
+    
+ <footer style="position: fixed;left: 0;bottom: 0;width: 100%;background-color: #333;color: #f2f2f2;text-align: center;">
+  <p>Developed by: Liyun Liu        Student ID: 467458</p>
+</footer>   
+    
 </body>
-
-
-
 </html>
