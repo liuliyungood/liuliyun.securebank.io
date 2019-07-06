@@ -1,0 +1,92 @@
+
+
+/* below coding is from https://www.w3schools.com/css/tryit.asp?filename=trycss_website_layout_navbar */
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+    margin-top: 16px;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float:left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+    font-size:20px;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+/*To make left div on the left and right div on the right, I copy and pasted below codes, and did some edition. from website: https://stackoverflow.com/questions/18489463/how-to-keep-fixed-div-on-the-left-and-relative-div-on-the-right-as-resizable-con */
+
+.left
+{
+  margin-left: 250px;
+    color:black;
+  font-size: 38px;
+  width: 600px;
+  height: 80px;
+  float:left;
+  position:fixed;
+  height: 50%;
+  text-align:justify;
+ }
+
+p{
+    font-size: 20px;
+}
+
+/* password validation CSS coding is from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_password_val */
+
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+    
+  margin-top: 100px;
+  padding: 20px;
+    width: calc(90% - 900px);
+  left: 900px;
+  height: calc(100% + 50px);
+  float: left;
+  position:relative;
+  text-align: center;
+}
+
+
+
+
